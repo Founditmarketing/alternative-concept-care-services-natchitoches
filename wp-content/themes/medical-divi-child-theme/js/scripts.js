@@ -1,0 +1,31 @@
+ // preloader
+    jQuery(window).load(function () {
+        "use strict";
+ if(  jQuery( '.et-bfb' ).length <= 0 && jQuery( '.et-fb' ).length <= 0  ){ 
+ jQuery(".status").fadeOut();
+ jQuery(".preloader").delay(1000).fadeOut("slow");
+ }else{
+ jQuery(".preloader").css('display','none');
+ }
+    }); 
+
+// collapse sub-menu effect on mobile 
+(function($) { 
+    function setup_collapsible_submenus() {
+        // mobile menu
+        $('.mobile_nav .menu-item-has-children > a').after('<span class="menu-closed"></span>');
+        $('.mobile_nav .menu-item-has-children > a').each(function() {
+            $(this).next().next('.sub-menu').toggleClass('hide',1000);
+        });
+        $('.mobile_nav .menu-item-has-children > a + span').on('click', function(event) {
+            event.preventDefault();
+            $(this).toggleClass('menu-open');
+            $(this).next('.sub-menu').toggleClass('hide',1000);
+        });
+    }
+    $(window).load(function() {
+        setTimeout(function() {
+            setup_collapsible_submenus();
+        }, 700);
+    });
+})(jQuery);    
